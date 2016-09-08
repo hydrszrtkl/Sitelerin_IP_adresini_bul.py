@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+# Author: Cyber-Warrior Hydd | Code Hunters 2
+
+
+import socket   #soketler için
+import sys  #cıkıs icin
+ 
+try:
+    # AF_INET, STREAM socket (TCP) adlı TCP soketini olusturmak icin
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+except socket.error, msg:
+    print 'Soket olusturlamadi. Hata Kodu: ' + str(msg[0]) + ' , Hata Mesaji : ' + msg[1]
+    sys.exit();
+ 
+print 'soket olusturuldu'
+ 
+host = 'www.google.com'
+ 
+try:
+    remote_ip = socket.gethostbyname( host )
+ 
+except socket.gaierror:
+    #soket çözülemezse
+    print 'Url cozulemedi cikiliyor.'
+    sys.exit()
+     
+print  host + ' sitesinin IP adresi ' + remote_ip
+
